@@ -6,8 +6,7 @@
 #include<string.h>
 int main()
 {
-    char rcvmsg[100];
-    char sendmsg[100];
+    
 	int sd,sd2,nsd,clilen,sport=6000,len,port;
 	
 	sd = socket(AF_INET,SOCK_STREAM,0);
@@ -45,12 +44,14 @@ int main()
     printf("\n");
 
     while(1){
-        recv(nsd,rcvmsg,20,0);
-        printf("%s\n",rcvmsg);
-        fgets(sendmsg,20,stdin);
-        len=strlen(sendmsg);
-        sendmsg[len-1]='\0';
-        send(nsd,sendmsg,20,0);
+	    char rcvmsg[100];
+	    char sendmsg[100];
+	    recv(nsd,rcvmsg,20,0);
+	    printf("%s\n",rcvmsg);
+	    fgets(sendmsg,20,stdin);
+	    len=strlen(sendmsg);
+	    sendmsg[len-1]='\0';
+	    send(nsd,sendmsg,20,0);
     }
     
 
